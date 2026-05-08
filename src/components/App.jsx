@@ -1,17 +1,15 @@
-import React from 'react';
-import { getInitialData } from '../utils';
-import NoteInput from './NoteInput';
-import NotesList from './NotesList';
+import React from "react";
+import { getInitialData } from "../utils";
+import NoteInput from "./NoteInput";
+import NotesList from "./NotesList";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      
       notes: getInitialData(),
-      searchKeyword:'',
-
+      searchKeyword: "",
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
@@ -21,7 +19,6 @@ class App extends React.Component {
   }
 
   onAddNoteHandler({ title, body }) {
-    
     const newNote = {
       id: `notes-${+Date.now()}`,
       title,
@@ -32,36 +29,35 @@ class App extends React.Component {
     this.setState((prevState) => ({
       notes: [newNote, ...prevState.notes],
     }));
-    console.warn('[TODO] Implement onAddNoteHandler', { title, body });
+    console.warn("[TODO] Implement onAddNoteHandler", { title, body });
   }
 
   onDeleteHandler(id) {
-    
     this.setState((prevState) => ({
       notes: prevState.notes.filter((note) => note.id !== id),
     }));
-    console.warn('[TODO] Implement onDeleteHandler', { id });
+    console.warn("[TODO] Implement onDeleteHandler", { id });
   }
 
   onArchiveHandler(id) {
     this.setState((prevState) => ({
       notes: prevState.notes.map((note) =>
-        note.id === id ? { ...note, archived: !note.archived } : note
+        note.id === id ? { ...note, archived: !note.archived } : note,
       ),
     }));
-    console.warn('[TODO] Implement onArchiveHandler', { id });
+    console.warn("[TODO] Implement onArchiveHandler", { id });
   }
 
   onSearchHandler(keyword) {
     this.setState({ searchKeyword: keyword });
-    console.warn('[TODO] Implement onSearchHandler', { keyword });
+    console.warn("[TODO] Implement onSearchHandler", { keyword });
   }
 
   render() {
     const { notes, searchKeyword } = this.state;
 
     const filteredNotes = notes.filter((note) =>
-      note.title.toLowerCase().includes(searchKeyword.toLowerCase())
+      note.title.toLowerCase().includes(searchKeyword.toLowerCase()),
     );
     const activeNotes = filteredNotes
       .filter((note) => !note.archived)
