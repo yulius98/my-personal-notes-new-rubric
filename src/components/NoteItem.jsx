@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { showFormattedDate } from '../utils';
 import NoteActionButton from './NoteActionButton';
 
@@ -54,18 +53,5 @@ function NoteItem({ note, onDelete, onArchive, searchKeyword = '' }) {
     </div>
   );
 }
-
-NoteItem.propTypes = {
-  note: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
-    archived: PropTypes.bool.isRequired,
-  }).isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onArchive: PropTypes.func.isRequired,
-  searchKeyword: PropTypes.string,
-};
 
 export default NoteItem;

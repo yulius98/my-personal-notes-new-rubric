@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+
 
 function NoteActionButton({ variant, onClick, dataTestId, children }) {
   return (
@@ -13,12 +13,5 @@ function NoteActionButton({ variant, onClick, dataTestId, children }) {
     </button>
   );
 }
-
-NoteActionButton.propTypes = {
-  variant: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  dataTestId: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
 
 export default NoteActionButton;
